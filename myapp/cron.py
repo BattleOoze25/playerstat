@@ -18,7 +18,7 @@ from . models import Player, Score
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = '1ObuwU_8xvhx7-X9YKKecyCdgSXtIUpCyMrGM0knzu0g'
+SAMPLE_SPREADSHEET_ID = '1KsjUgH8XtOzNmTvlwHs78B0TV-VBrcUWgx_uQdSTPx0'
 SAMPLE_RANGE_NAME = 'A2:ZZ'
 
 
