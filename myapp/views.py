@@ -4,9 +4,10 @@ from rest_framework.response import Response
 
 from . models import Player, Score
 from . serializers import PlayerSerializer
-
+from . cron import get_sheet_data
 @api_view(['GET'])
 def get_player_average(request):
+    get_sheet_data()
     objs = Player.objects.all()
     # objs = PlayerSerializer(objs, many=True)
     

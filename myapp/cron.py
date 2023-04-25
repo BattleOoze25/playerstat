@@ -12,7 +12,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from myapp.models import Player, Score
+from . models import Player, Score
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
@@ -22,7 +22,7 @@ SAMPLE_SPREADSHEET_ID = '1ObuwU_8xvhx7-X9YKKecyCdgSXtIUpCyMrGM0knzu0g'
 SAMPLE_RANGE_NAME = 'A2:ZZ'
 
 
-def main():
+def get_sheet_data():
 
     # obj = Player(name="hello", match="hello1", score=23)
     # obj.save()
@@ -33,15 +33,19 @@ def main():
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
+    # print("token here")
+    print(os.getcwd())
     if os.path.exists('token.json'):
+        print("token here")
         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
+            print("here")
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'D:\DEV\SubtleRR\myproject\myapp\credentials.json', SCOPES)
+                'credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open('token.json', 'w') as token:
@@ -90,11 +94,11 @@ def main():
         print(err)
 
 
-if __name__ == '__main__':
-    # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    # sys.path.append(BASE_DIR)
-    # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
-    # django.setup()
-    main()
+# if __name__ == '__main__':
+#     # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#     # sys.path.append(BASE_DIR)
+#     # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
+#     # django.setup()
+#     main()
 # if __name__ == '__main__':
     
